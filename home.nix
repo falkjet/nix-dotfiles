@@ -6,6 +6,7 @@
     bash
     bat
     coreutils
+    tree
     delta
     git
     glxinfo
@@ -32,6 +33,18 @@
         vim-airline
         vim-airline-themes
         vim-nix
+      ];
+    };
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        dracula-theme.theme-dracula
+        bungcip.better-toml
+        ms-vscode.cpptools
+        graphql.vscode-graphql
+        ms-toolsai.jupyter
+        james-yu.latex-workshop
+        pkief.material-icon-theme
       ];
     };
   };
