@@ -45,6 +45,7 @@
         ms-toolsai.jupyter
         james-yu.latex-workshop
         pkief.material-icon-theme
+        bbenoist.nix
       ];
     };
   };
