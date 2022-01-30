@@ -3,7 +3,6 @@
   nixpkgs.config = { allowUnfree = true; };
 
   home.packages = with pkgs; [
-    bash
     bat
     coreutils
     tree
@@ -15,6 +14,12 @@
     which
   ];
   programs = {
+    bash = {
+      enable = true;
+      initExtra = ''
+        source <(starship init bash --print-full-init)
+      '';
+    };
     home-manager.enable = true;
     neovim = {
       enable = true;
