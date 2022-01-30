@@ -22,6 +22,10 @@
         source <(starship init bash --print-full-init)
       '';
     };
+    rofi = {
+      enable = true;
+      theme = "sidebar";
+    };
     home-manager.enable = true;
     neovim = {
       enable = true;
