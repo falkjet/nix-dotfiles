@@ -3,6 +3,7 @@
   nixpkgs.config = { allowUnfree = true; };
 
   home.packages = with pkgs; [
+    nerdfonts
     bat
     coreutils
     tree
@@ -13,6 +14,7 @@
     thunderbird
     which
   ];
+  fonts.fontconfig.enable = true;
   programs = {
     bash = {
       enable = true;
@@ -52,6 +54,14 @@
         pkief.material-icon-theme
         bbenoist.nix
       ];
+      userSettings = {
+        "workbench.colorTheme" = "Dracula";
+        "workbench.iconTheme" = "material-icon-theme";
+        "editor.formatOnSave" = true;
+        "terminal.integrated.allowChords" = false;
+        "terminal.integrated.commandsToSkipShell" = [ "-workbench.action.quickOpen" ];
+        "terminal.integrated.fontFamily" = "TerminessTTF Nerd Font";
+      };
     };
   };
 }
