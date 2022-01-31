@@ -3,6 +3,7 @@
   nixpkgs.config = { allowUnfree = true; };
 
   home.packages = with pkgs; [
+    teams
     nerdfonts
     bat
     coreutils
