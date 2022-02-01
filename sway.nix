@@ -31,15 +31,16 @@
       "${mod}+Shift+Up" = "move up";
       "${mod}+Shift+Right" = "move right";
 
+      inherit (builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+${w}" = "workspace number ${w}";}) workspaces));
+      inherit (builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+Shift+${w}" = "move container to workspace number ${w}";}) workspaces));
 
       "${mod}+v" = "split v";
       "${mod}+f" = "fullscreen toggle";
       "${mod}+s" = "layout stacking";
       "${mod}+w" = "layout tabbed";
       "${mod}+e" = "layout toggle split";
-    }
-    // builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+${w}" = "workspace number ${w}";}) workspaces)
-    // builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+Shift+${w}" = "move container to workspace number ${w}";}) workspaces);
+      "${mod}+Shift+e" = ''exec "swaynag -m 'do you want to exit sway' -z 'exit sway' 'swaymsg exit' -s cancel"'';
+    };
     config.input = {
       "*" = { xkb_layout = "no"; };
     };
