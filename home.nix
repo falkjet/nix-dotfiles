@@ -1,5 +1,6 @@
 { config, lib, pkgs, ...}:
 {
+  imports = [ ./sway.nix ];
   nixpkgs.config = { allowUnfree = true; };
 
   home.packages = with pkgs; [
