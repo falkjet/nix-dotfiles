@@ -4,6 +4,7 @@
   nixpkgs.config = { allowUnfree = true; };
 
   home.packages = with pkgs; [
+    brave
     teams
     nerdfonts
     bat
