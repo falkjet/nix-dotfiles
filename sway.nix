@@ -1,5 +1,11 @@
 { config, lib, pkgs, ...}:
 {
+  home.packages = with pkgs; [
+    grim
+    wl-clipboard
+    slurp
+    pulseaudio
+  ];
   wayland.windowManager.sway = {
     enable = true;
     config.focus.forceWrapping = true;
@@ -20,6 +26,14 @@
       "${mod}+Shift+r" = "reload";
       "${mod}+space" = "exec rofi -modi drun -show drun";
       "${mod}+b" = "exec brave";
+
+      "Print" = ''exec grim -t png - | wl-copy -t image/png'';
+      "Shift+Print" = ''exec grim -t png -g "$(slurp -d)" - | wl-copy -t image/png'';
+
+      XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
+      XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
+      XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+      XF86AudioMicMute = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 
       "Mod1+Tab" = "focus next";
       "${mod}+h" = "focus left";
