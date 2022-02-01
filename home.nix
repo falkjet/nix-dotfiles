@@ -3,6 +3,14 @@
   imports = [ ./sway.nix ];
   nixpkgs.config = { allowUnfree = true; };
 
+  gtk = {
+    enable = true;
+    iconTheme.package = pkgs.flat-remix-icon-theme;
+    iconTheme.name = "Flat-Remix-Green-Dark";
+    theme.package = pkgs.flat-remix-gtk;
+    theme.name = "Flat-Remix-GTK-Green-Dark-Solid";
+  };
+
   home.packages = with pkgs; [
     brave
     teams
