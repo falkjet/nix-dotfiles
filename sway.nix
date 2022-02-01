@@ -20,7 +20,7 @@
     config.bars = [{command = "waybar"; }];
     config.keybindings = let
       mod = "Mod4";
-      workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "0"];
+      workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
     in {
       "${mod}+Return" = "exec kitty";
       "${mod}+Shift+r" = "reload";
@@ -67,8 +67,12 @@
       "Mod1+f4" = "kill";
       "${mod}+Shift+e" = ''exec "swaynag -m 'do you want to exit sway' -z 'exit sway' 'swaymsg exit' -s cancel"'';
     }
-    // builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+${w}" = "workspace number ${w}";}) workspaces)
-    // builtins.foldl' (a: b: a//b) {} (map (w: {"${mod}+Shift+${w}" = "move container to workspace number ${w}";}) workspaces);
+    // builtins.foldl' (a: b: a//b) {} (
+      map (w: {"${mod}+${if w == "10" then "0" else w}" = "workspace number ${w}";}) workspaces
+    )
+    // builtins.foldl' (a: b: a//b) {} (
+      map (w: {"${mod}+Shift+${if w == "10" then "0" else w}" = "move container to workspace number ${w}";}) workspaces
+    );
     config.input = {
       "*" = { xkb_layout = "no"; };
     };
