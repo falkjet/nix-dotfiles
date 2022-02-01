@@ -130,9 +130,6 @@ label:focus {
   background-color: #eb4d4b;
 }
 
-#idle_inhibitor {
-}
-
 #idle_inhibitor.activated {
   background-color: #d9ff00;
   color: #2d3436;
