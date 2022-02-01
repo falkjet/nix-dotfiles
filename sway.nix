@@ -11,6 +11,7 @@
       unfocused = { border = "#282a36"; childBorder = "#282a36"; background = "#282a36"; text = "#888888"; indicator = "#292d2e"; };
       urgent = { border = "#2f343a"; childBorder = "#2f343a"; background = "#900000"; text = "#ffffff"; indicator = "#900000"; };
     };
+    config.bars = [{command = "waybar"; }];
     config.keybindings = let
       mod = "Mod4";
       workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "0"];
@@ -57,5 +58,91 @@
     config.input = {
       "*" = { xkb_layout = "no"; };
     };
+  };
+  
+  programs.waybar = {
+    enable = true;
+    settings.mainbar = {
+      position = "bottom";
+      height = 30;
+      modules-left = ["sway/workspaces" "sway/mode"];
+      modules-center = ["sway/window"];
+      modules-right = [
+        "idle_inhibitor"
+        "pulseaudio"
+        "cpu"
+        "memory"
+        "temperature"
+        "backlight"
+        "battery"
+        "battery#bat2"
+        "clock"
+        "tray"
+      ];
+
+      "sway/mode" = {
+        "format" = "<span style=\"italic\">{}</span>";
+      };
+      idle_inhibitor = {
+        format = "{icon}";
+        format-icons = {
+          activated = "";
+          deactivated = "";
+        };
+      };
+      tray = {
+        spacing = 10;
+      };
+      clock = {
+        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        format-alt = "{:%Y-%m-%d}";
+      };
+      cpu = {
+        format = "{usage}% ";
+        tooltip = false;
+      };
+      memory = {
+        format = "{}% ";
+      };
+      temperature = {
+        critical-threshold = 80;
+        format = "{temperatureC}°C {icon}";
+        format-icons = ["" "" ""];
+      };
+      "backlight" = {
+        format = "{percent}% {icon}";
+        format-icons = ["" ""];
+      };
+      "battery" = {
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{capacity}% {icon}";
+        format-charging = "{capacity}% ";
+        format-plugged = "{capacity}% ";
+        format-alt = "{time} {icon}";
+        format-icons = ["" "" "" "" ""];
+      };
+      pulseaudio = {
+        format = "{volume}% {icon} {format_source}";
+        format-bluetooth = "{volume}% {icon} {format_source}";
+        format-bluetooth-muted = " {icon} {format_source}";
+        format-muted = " {format_source}";
+        format-source = "{volume}% ";
+        format-source-muted = "";
+        format-icons = {
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = ["" "" ""];
+        };
+        on-click = "pavucontrol";
+      };
+    };
+    style = builtins.readFile ./waybar.css;
   };
 }
