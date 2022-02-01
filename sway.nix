@@ -4,6 +4,13 @@
     enable = true;
     config.focus.forceWrapping = true;
     config.floating.modifier = "Mod4";
+    config.window.border = 0;
+    config.colors = {
+      focused = { border = "#00afff"; childBorder = "#00afff"; background = "#00afff"; text = "#000000"; indicator = "#dddddd"; };
+      focusedInactive = { border = "#282a36"; childBorder = "#282a36"; background = "#282a36"; text = "#888888"; indicator = "#292d2e"; };
+      unfocused = { border = "#282a36"; childBorder = "#282a36"; background = "#282a36"; text = "#888888"; indicator = "#292d2e"; };
+      urgent = { border = "#2f343a"; childBorder = "#2f343a"; background = "#900000"; text = "#ffffff"; indicator = "#900000"; };
+    };
     config.keybindings = let
       mod = "Mod4";
       workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "0"];
