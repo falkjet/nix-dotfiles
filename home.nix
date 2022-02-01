@@ -32,6 +32,13 @@
       source <(starship init bash --print-full-init)
     '';
   };
+  programs.kitty = {
+    extraConfig = ''
+      window_margin_width 5
+      background_opacity 0.6
+    '';
+    enable = true;
+  };
   programs.rofi = {
     enable = true;
     theme = "sidebar";
