@@ -21,6 +21,7 @@
     delta
     git
     glxinfo
+    zoxide
     starship
     thunderbird
     which
@@ -29,6 +30,7 @@
   programs.bash = {
     enable = true;
     initExtra = ''
+      source <(zoxide init bash --cmd c)
       source <(starship init bash --print-full-init)
     '';
   };
