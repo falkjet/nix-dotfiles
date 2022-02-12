@@ -74,6 +74,7 @@
       james-yu.latex-workshop
       pkief.material-icon-theme
       bbenoist.nix
+      esbenp.prettier-vscode
     ];
     userSettings = {
       "workbench.colorTheme" = "Dracula";
@@ -82,6 +83,9 @@
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.commandsToSkipShell" = [ "-workbench.action.quickOpen" ];
       "terminal.integrated.fontFamily" = "TerminessTTF Nerd Font";
+      "[javascript][typescript][javascriptreact][typescriptreact]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
     };
   };
 }
