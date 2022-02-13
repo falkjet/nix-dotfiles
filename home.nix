@@ -37,7 +37,7 @@
   programs.kitty = {
     extraConfig = ''
       window_margin_width 5
-      background_opacity 0.6
+      background_opacity 0.7
     '';
     enable = true;
   };
@@ -58,11 +58,16 @@
       set textwidth=80
       set expandtab
       let g:airline_powerline_fonts = 1
+      let g:onedark_color_overrides = {"background":
+      \ {"gui": "NONE", "cterm": "NONE", "cterm16": "NONE" }
+      \ }
+      colorscheme onedark
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
       vim-airline-themes
       vim-nix
+      onedark-vim
     ];
   };
   programs.vscode = {
