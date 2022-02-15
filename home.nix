@@ -58,10 +58,15 @@
       set textwidth=80
       set expandtab
       let g:airline_powerline_fonts = 1
+      let g:airline#extensions#tabline#enabled = 1
+      let g:airline#extensions#tabline#buffer_nr_show = 1
+      let g:airline#extensions#tabline#ignore_bufadd_pat =
+      \ '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
       let g:onedark_color_overrides = {"background":
       \ {"gui": "NONE", "cterm": "NONE", "cterm16": "NONE" }
       \ }
       colorscheme onedark
+      noremap <C-b> <C-^>
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
