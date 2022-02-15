@@ -5,6 +5,7 @@
     wl-clipboard
     slurp
     pulseaudio
+    clipman
   ];
   wayland.windowManager.sway = {
     enable = true;
@@ -18,6 +19,9 @@
       urgent = { border = "#2f343a"; childBorder = "#2f343a"; background = "#900000"; text = "#ffffff"; indicator = "#900000"; };
     };
     config.bars = [{command = "waybar"; }];
+    config.startup = [
+      { command = "wl-paste -t text --watch clipman store"; }
+    ];
     config.keybindings = let
       mod = "Mod4";
       workspaces = ["1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
@@ -25,6 +29,7 @@
       "${mod}+Return" = "exec kitty";
       "${mod}+Shift+r" = "reload";
       "${mod}+space" = "exec rofi -modi drun -show drun";
+      "${mod}+Shift+c" = "exec clipman pick --tool rofi";
       "${mod}+b" = "exec brave";
 
       "Print" = ''exec grim -t png - | wl-copy -t image/png'';
