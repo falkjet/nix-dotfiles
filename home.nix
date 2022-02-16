@@ -1,6 +1,6 @@
 { config, lib, pkgs, ...}:
 {
-  imports = [ ./sway.nix ];
+  imports = [ ./sway.nix ./jupyter.nix ];
   nixpkgs.config = { allowUnfree = true; };
 
   gtk = {
