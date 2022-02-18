@@ -25,6 +25,7 @@
     starship
     thunderbird
     which
+    evince
   ];
   fonts.fontconfig.enable = true;
   programs.bash = {
@@ -32,6 +33,7 @@
     initExtra = ''
       source <(zoxide init bash --cmd c)
       source <(starship init bash --print-full-init)
+      export EDITOR=nvim
     '';
   };
   programs.kitty = {
@@ -67,12 +69,15 @@
       \ }
       colorscheme onedark
       noremap <C-b> <C-^>
+
+      let g:vimtex_view_general_viewer = 'evince'
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
       vim-airline-themes
       vim-nix
       onedark-vim
+      vimtex
     ];
   };
   programs.vscode = {
