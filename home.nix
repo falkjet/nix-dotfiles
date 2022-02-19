@@ -2,6 +2,13 @@
 {
   imports = [ ./sway.nix ];
   nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.overlays = [
+    (self: super: {
+      nerdfonts = super.nerdfonts.override {
+        fonts = [ "JetBrainsMono" ];
+      };
+    })
+  ];
 
   gtk = {
     enable = true;
@@ -40,6 +47,7 @@
     extraConfig = ''
       window_margin_width 5
       background_opacity 0.7
+      font_family JetBrainsMono Nerd Font
     '';
     enable = true;
   };
@@ -97,9 +105,11 @@
       "workbench.colorTheme" = "Dracula";
       "workbench.iconTheme" = "material-icon-theme";
       "editor.formatOnSave" = true;
+      "editor.fontFamily" = "JetBrainsMono Nerd Font Mono";
+      "editor.fontLigatures" = true;
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.commandsToSkipShell" = [ "-workbench.action.quickOpen" ];
-      "terminal.integrated.fontFamily" = "TerminessTTF Nerd Font";
+      "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font Mono";
       "[javascript][typescript][javascriptreact][typescriptreact]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
