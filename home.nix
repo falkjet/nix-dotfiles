@@ -1,6 +1,9 @@
 { config, lib, pkgs, ...}:
 {
-  imports = [ ./sway.nix ];
+  imports = [
+    ./sway.nix
+    ./neovim.nix
+  ];
   nixpkgs.config = { allowUnfree = true; };
   nixpkgs.overlays = [
     (self: super: {
@@ -37,7 +40,6 @@
     highlight
     mediainfo
     glow
-    neovim-remote
   ];
   fonts.fontconfig.enable = true;
   programs.bash = {
@@ -77,45 +79,6 @@
     theme = "sidebar";
   };
   programs.home-manager.enable = true;
-  programs.neovim = {
-    enable = true;
-    extraConfig = ''
-      set number
-      set relativenumber
-      set mouse=a
-      set tabstop=4
-      set shiftwidth=4
-      set softtabstop=4
-      set textwidth=80
-      set expandtab
-      let g:airline_powerline_fonts = 1
-      let g:airline#extensions#tabline#enabled = 1
-      let g:airline#extensions#tabline#ignore_bufadd_pat =
-      \ '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
-      let g:onedark_color_overrides = {"background":
-      \ {"gui": "NONE", "cterm": "NONE", "cterm16": "NONE" }
-      \ }
-      colorscheme onedark
-
-      let g:vimtex_view_general_viewer = 'evince'
-      nnoremap <C-b> :CtrlPBuffer<CR>
-      inoremap <C-b> <Esc>:CtrlPBuffer<CR>
-      vnoremap <C-b> <Esc>:CtrlPBuffer<CR>
-      tnoremap <C-b> <C-\><C-n>:CtrlPBuffer<CR>
-      autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
-
-      let $GIT_EDITOR = 'nvr -cc split --remote-wait'
-      autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=wipe
-    '';
-    plugins = with pkgs.vimPlugins; [
-      vim-airline
-      vim-airline-themes
-      vim-nix
-      onedark-vim
-      vimtex
-      ctrlp-vim
-    ];
-  };
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
