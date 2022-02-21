@@ -61,6 +61,8 @@
 
       command! -nargs=0 Format :call CocActionAsync('format')
       command! -nargs=0 OrganizeImports :call CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+      lua require("gitsigns").setup()
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
@@ -71,6 +73,7 @@
       ctrlp-vim
       coc-nvim
       coc-python
+      gitsigns-nvim
     ];
   };
 }
