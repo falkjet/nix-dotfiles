@@ -105,6 +105,7 @@
       autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 
       let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+      autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=wipe
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
