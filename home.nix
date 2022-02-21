@@ -98,9 +98,9 @@
 
       let g:vimtex_view_general_viewer = 'evince'
       nnoremap <C-b> :CtrlPBuffer<CR>
-      inoremap <C-b> <Esc> :CtrlPBuffer<CR>
-      vnoremap <C-b> <Esc> :CtrlPBuffer<CR>
-      tnoremap <C-b> <C-\><C-n> :CtrlPBuffer<CR>
+      inoremap <C-b> <Esc>:CtrlPBuffer<CR>
+      vnoremap <C-b> <Esc>:CtrlPBuffer<CR>
+      tnoremap <C-b> <C-\><C-n>:CtrlPBuffer<CR>
       autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
     '';
     plugins = with pkgs.vimPlugins; [
