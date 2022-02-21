@@ -30,6 +30,7 @@
       inoremap <C-b> <Esc>:CtrlPBuffer<CR>
       vnoremap <C-b> <Esc>:CtrlPBuffer<CR>
       tnoremap <C-b> <C-\><C-n>:CtrlPBuffer<CR>
+      let g:ctrlp_user_command = 'cd %; find . -not \( -name node_modules -prune \) -type f'
       autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 
       let $GIT_EDITOR = 'nvr -cc split --remote-wait'
