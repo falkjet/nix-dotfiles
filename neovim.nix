@@ -73,6 +73,9 @@
       ctrlp-vim
       coc-nvim
       coc-python
+      coc-emmet
+      coc-vimtex
+      coc-tsserver
       gitsigns-nvim
     ];
   };
