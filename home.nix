@@ -37,6 +37,7 @@
     highlight
     mediainfo
     glow
+    neovim-remote
   ];
   fonts.fontconfig.enable = true;
   programs.bash = {
@@ -102,6 +103,8 @@
       vnoremap <C-b> <Esc>:CtrlPBuffer<CR>
       tnoremap <C-b> <C-\><C-n>:CtrlPBuffer<CR>
       autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+
+      let $GIT_EDITOR = 'nvr -cc split --remote-wait'
     '';
     plugins = with pkgs.vimPlugins; [
       vim-airline
