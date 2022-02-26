@@ -3,6 +3,7 @@
   imports = [
     ./sway.nix
     ./neovim.nix
+    ./dconf.nix
   ];
   nixpkgs.config = { allowUnfree = true; };
   nixpkgs.overlays = [
