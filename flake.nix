@@ -13,8 +13,18 @@
         stateVersion = "22.05";
         configuration = { config, lib, pkgs, ...}:
         {
-          imports = [ ./home.nix ];
+          imports = [ ./home/home.nix ];
         };
+      };
+    };
+    nixosConfigurations = {
+      falx-laptop = {
+        system = "x86_64-linux";
+        modules =  [
+          ({ pkgs, ... }: {
+            imports = [ ./machines/falx-laptop/configuration.nix ];
+          })  
+        ];
       };
     };
   };
