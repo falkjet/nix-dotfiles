@@ -70,10 +70,10 @@
   programs.kitty = {
     extraConfig = ''
       window_margin_width 5
-      background_opacity 0.7
       font_family JetBrainsMono Nerd Font
       wayland_titlebar_color #23252e
       hide_window_decorations yes
+      background #000000
     '';
     enable = true;
   };
