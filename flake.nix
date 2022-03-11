@@ -17,15 +17,13 @@
         };
       };
     };
-    nixosConfigurations = {
-      falx-laptop = {
-        system = "x86_64-linux";
-        modules =  [
-          ({ pkgs, ... }: {
-            imports = [ ./machines/falx-laptop/configuration.nix ];
-          })  
-        ];
-      };
+    nixosConfigurations.falx-laptop = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules =  [
+        ({ pkgs, ... }: {
+          imports = [ ./machines/falx-laptop/configuration.nix ];
+        })  
+      ];
     };
   };
 }
