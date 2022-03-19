@@ -14,6 +14,8 @@
         configuration = { config, lib, pkgs, ...}:
         {
           imports = [ ./home/home.nix ];
+          programs.git.userEmail = "falk@jetlund.com";
+          programs.git.userName = "Falk Markus Dursun Jetlund";
         };
       };
     };
