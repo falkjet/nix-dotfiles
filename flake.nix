@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
+    wrappers.url = "github:falkjet/nix-wrapper-packages";
   };
   outputs = { self, ... }@inputs: {
     homeConfigurations = {
@@ -16,6 +17,7 @@
           imports = [ ./home/home.nix ];
           programs.git.userEmail = "falk@jetlund.com";
           programs.git.userName = "Falk Markus Dursun Jetlund";
+          home.packages = [ inputs.wrappers.packages.x86_64-linux.neovim ];
         };
       };
     };
