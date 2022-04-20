@@ -40,6 +40,8 @@
   # Configure keymap in X11
   services.xserver.layout = "no";
   # services.xserver.xkbOptions = "eurosign:e";
+  
+  programs.adb.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -65,7 +67,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.falk = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
