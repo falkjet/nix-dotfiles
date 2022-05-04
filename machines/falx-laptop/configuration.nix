@@ -67,7 +67,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.falk = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "adbusers" "podman" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -80,7 +80,7 @@
     firefox
   ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
   virtualisation.podman.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
