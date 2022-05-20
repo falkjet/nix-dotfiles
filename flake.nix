@@ -1,27 +1,21 @@
 {
   description = "A very basic flake";
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     wrappers.url = "github:falkjet/nix-wrapper-packages";
   };
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, wrappers }:
+  outputs = { self, nixpkgs, home-manager, wrappers }:
   let
     system = "x86_64-linux";
-    pkgs = (import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    });
-    pkgs-unstable = (import nixpkgs-unstable {
+    pkgs = (import nixpkgs{
       inherit system;
       config.allowUnfree = true;
     });
   in {
     homeConfigurations = {
       falk = home-manager.lib.homeManagerConfiguration {
-        inherit system;
-        pkgs = pkgs-unstable;
+        inherit system pkgs;
         homeDirectory = "/home/falk";
         username = "falk";
         stateVersion = "22.05";
