@@ -103,14 +103,22 @@
       "terminal.integrated.allowChords" = false;
       "terminal.integrated.commandsToSkipShell" = [ "-workbench.action.quickOpen" ];
       "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font Mono";
-      "[javascript][typescript][javascriptreact][typescriptreact]" = {
+      "[javascript][typescript][javascriptreact][typescriptreact][vue][json][jsonc]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "editor.tabSize" = 2;
+      };
+      "emmet.includeLanguages" = {
+        "nunjucks" = "html";
+      };
+      "[nunjucks]" = {
+        "editor.tabSize" = 2;
       };
     };
   };
   programs.git = {
     enable = true;
     delta.enable = true;
+    extraConfig.core.excludesfile = "${pkgs.writeText "gitignore" "Session.vim"}";
   };
   programs.lf = {
     enable = true;
@@ -148,7 +156,7 @@
       "open" = ''
         ${"$"}{{
             test -L $f && f=$(readlink -f $f)
-            case $(file --mime-type $f -b) in
+            case $(${pkgs.file}/bin/file --mime-type $f -b) in
                 text/*) $EDITOR $fx;;
                 *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
             esac
