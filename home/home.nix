@@ -40,6 +40,9 @@
     highlight
     mediainfo
     glow
+    kitty
+    neovim
+    (writeShellScriptBin "gnome-terminal" ''shift; ${kitty}/bin/kitty "$@"'')
   ];
   fonts.fontconfig.enable = true;
   programs.bash = {
@@ -82,7 +85,7 @@
   };
   programs.home-manager.enable = true;
   programs.vscode = {
-    enable = true;
+    enable = false;
     extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       bungcip.better-toml
@@ -121,7 +124,7 @@
     extraConfig.core.excludesfile = "${pkgs.writeText "gitignore" "Session.vim"}";
   };
   programs.lf = {
-    enable = true;
+    enable = false;
     settings = {
       shell = "bash";
       shellopts = "-eu";

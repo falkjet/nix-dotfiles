@@ -8,14 +8,17 @@
   outputs = { self, nixpkgs, home-manager, wrappers }:
   let
     system = "x86_64-linux";
+    wrapperpkgs = wrappers.packages."${system}";
     pkgs = (import nixpkgs{
       inherit system;
       config.allowUnfree = true;
+      overlays = [(self: super: wrapperpkgs)];
     });
   in {
     homeConfigurations = {
       falk = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
+        inherit system;
+        pkgs = pkgs;
         homeDirectory = "/home/falk";
         username = "falk";
         stateVersion = "22.05";
@@ -24,7 +27,6 @@
           imports = [ ./home/home.nix ];
           programs.git.userEmail = "falk@jetlund.com";
           programs.git.userName = "Falk Markus Dursun Jetlund";
-          home.packages = [ wrappers.packages.x86_64-linux.neovim ];
         };
       };
     };

@@ -82,6 +82,7 @@
 
   virtualisation.podman.dockerSocket.enable = true;
   virtualisation.podman.enable = true;
+  virtualisation.virtualbox.host = { enable = true; enableExtensionPack = true; };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -94,7 +95,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
